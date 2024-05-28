@@ -18,8 +18,7 @@
        
         </div>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDataBound="OnRowDataBound"
-            DataKeyNames="EMP_ID" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
-            PageSize="10" AllowPaging="True" OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating"
+            DataKeyNames="EMP_ID" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" AllowPaging="True" OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating"
             OnRowDeleting="OnRowDeleting" EmptyDataText="目前無記錄.">
             <Columns>
                 
@@ -30,6 +29,8 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="txtEMP_ID" runat="server" Text='<%# Eval("EMP_ID") %>' Width="140"></asp:TextBox>
                     </EditItemTemplate>
+
+<ItemStyle Width="150px"></ItemStyle>
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="員工姓名" ItemStyle-Width="150" SortExpression="EMP_NAME">
@@ -39,6 +40,8 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="txtEMP_NAME" runat="server" Text='<%# Eval("EMP_NAME") %>' Width="140"></asp:TextBox>
                     </EditItemTemplate>
+
+<ItemStyle Width="150px"></ItemStyle>
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="年齡" ItemStyle-Width="150" SortExpression="AGE">
@@ -48,6 +51,8 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="txtAGE" runat="server" Text='<%# Eval("AGE") %>' Width="140"></asp:TextBox>
                     </EditItemTemplate>
+
+<ItemStyle Width="150px"></ItemStyle>
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="生日" ItemStyle-Width="150" SortExpression="Birthday">
@@ -57,19 +62,24 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="txtBirthday" runat="server" Text='<%# Eval("Birthday") %>' Width="140"></asp:TextBox>
                     </EditItemTemplate>
+
+<ItemStyle Width="150px"></ItemStyle>
                 </asp:TemplateField>
 
                 <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true"
-                    ItemStyle-Width="150" />
+                    ItemStyle-Width="150" FooterText="Footer" >
+
+<ItemStyle Width="150px"></ItemStyle>
+                  </asp:CommandField>
 
             </Columns>
         </asp:GridView>
 
           <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse">
             <tr>
-                <td style="width: 150px">員工編號:<br />
+            <%--    <td style="width: 150px">員工編號:<br />
                     <asp:TextBox ID="txtEmp_ID" runat="server" Width="140" />
-                </td>
+                </td>--%>
                 <td style="width: 150px">員工姓名:<br />
                     <asp:TextBox ID="txtEmp_Name" runat="server" Width="140" />
                 </td>

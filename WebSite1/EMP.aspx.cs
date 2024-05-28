@@ -51,26 +51,27 @@ public partial class EMP : System.Web.UI.Page
     /// <param name="e"></param>
     protected void Insert(object sender, EventArgs e)
     {
-        string emp_id = txtEmp_ID.Text;
+      // string emp_id = txtEmp_ID.Text;
         string emp_name = txtEmp_Name.Text;
         string age = txtAge.Text;
         string birthday = txtBirthday.Text;
 
-        txtEmp_ID.Text = "";
+      //  txtEmp_ID.Text = "";
         txtEmp_Name.Text = "";
         txtAge.Text = "";
         txtBirthday.Text = "";
         lbl_msg.Text = "";
 
-        if (!string.IsNullOrEmpty(emp_id) && !string.IsNullOrEmpty(emp_name))
+        //if (!string.IsNullOrEmpty(emp_id) && !string.IsNullOrEmpty(emp_name))
+        if (!string.IsNullOrEmpty(emp_name))
         {
-            string query = "INSERT INTO emp VALUES(@EMP_ID, @EMP_NAME,@Age,@Birthday)";
+            string query = "INSERT INTO emp VALUES(@EMP_NAME,@Age,@Birthday)";
             string constr = ConfigurationManager.ConnectionStrings["TESTDBConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
-                    cmd.Parameters.AddWithValue("@EMP_ID", emp_id);
+                  //  cmd.Parameters.AddWithValue("@EMP_ID", emp_id);
                     cmd.Parameters.AddWithValue("@EMP_NAME", emp_name);
                     cmd.Parameters.AddWithValue("@Age", age);
                     cmd.Parameters.AddWithValue("@Birthday", birthday);
