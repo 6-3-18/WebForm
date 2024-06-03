@@ -30,17 +30,30 @@ public partial class EMP : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["TESTDBConnectionString"].ConnectionString;
         string query = "SELECT * FROM EMP";
-        using (SqlConnection con = new SqlConnection(constr))
+        try
         {
-            using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
+            using (SqlConnection con = new SqlConnection(constr))
             {
-                using (DataTable dt = new DataTable())
+                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
                 {
-                    sda.Fill(dt);
-                    GridView1.DataSource = dt;
-                    GridView1.DataBind();
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(dt);
+                        GridView1.DataSource = dt;
+                        GridView1.DataBind();
+                    }
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            lbl_msg.Text = ex.Message.ToString();
+            //Console.WriteLine(ex.Message.ToString());
+            //DialogResult Result = MessageBox.Show(ex.Message.ToString(), "Confirm Message");
+        }
+        finally
+        {
+          
         }
     }
     /// <summary>
